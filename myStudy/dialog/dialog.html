@@ -11,21 +11,57 @@
     <link rel="stylesheet" href="dialog.css">
 </head>
 <body>
-    <div class="g-dialog-container">
+    <!--遮罩层-->
+    <!--<div class="g-dialog-container">
         <div class="dialog-window">
-            <div class="dialog-head"></div>
+            <div class="dialog-head waiting"></div>
             <div class="dialog-content">你确定要清空购物车？</div>
             <div class="dialog-foot">
                 <button>按钮1</button>
                 <button>按钮2</button>
             </div>
         </div>
-    </div>
+    </div>-->
     <!--<button id="btn1">没有传递任何参数（需手动关闭）</button>
         <button id="btn2">弹出一个不带任何按钮，且是警告的框，并且2秒后自动关闭</button>
         <button id="btn3">弹出一个有确认和取消按钮的成功框，点击按钮直接关闭</button>
         <button id="btn4">弹出一个有确认按钮的警告框，点击按钮不关闭（需手动关闭）</button>
         <button id="btn5">弹出一个多组合的按钮框，且按钮样式可定制</button>
         <button id="btn6">弹出一个确认和删除的框，点击确认弹出加载框2秒自动关闭，点击删除按钮把上一次框关闭</button>-->
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/dialog.js"></script>
+    <script>
+        var d = new Dialog({
+            // // 对话框的宽
+            // width: 100,
+            // // 对话框的高
+            // height: 50,
+            // // 对话框提示信息
+            // message: "你还好吗？",
+            // // 对话框的类型
+            // type: 'warning',
+            // // 按钮配置
+            // buttons: [
+            //     {
+            //         type: "red",
+            //         text: "不好",
+            //         callback: function () {
+
+            //         }
+            //     },
+            //     {
+            //         type: "green",
+            //         text: "好啊",
+            //         callback: function () {
+
+            //         }
+            //     }
+            // ],
+            // // 弹出框延迟多久关闭
+            // delay: 300,
+            // // 对话框遮罩透明度
+            // maskOpacity: 0.5
+        });
+    </script>
 </body>
 </html>

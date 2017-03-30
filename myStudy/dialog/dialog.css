@@ -12,6 +12,7 @@ button {
     display: block;
     width: 100%;
     padding: 10px;
+    text-shadow: #666 1px 1px 1px;
     margin: 20px 0;
     border: none;
     border-radius: 10px;
@@ -39,4 +40,40 @@ button {
     padding: 1em;
     border-radius: 10px;
     background: rgba(0,0,0,.8);
+}
+
+.dialog-head {
+    padding: 1em;
+    color: rgba(0,0,0,.1);
+    width: 4em;
+    height: 4em;
+    margin: 0 auto;
+}
+
+.dialog-content {
+    padding: 1em 1em 0;
+    color: #fff;
+    line-height: 180%;
+    background-size: 50px;
+}
+
+.dialog-foot {
+    padding: 1em 1em 0;
+    display: -webkit-flex;
+    -webkit-justify-content:center;
+    -webkit-align-items:center;
+}
+
+.waiting {
+    background: url('img/loading.gif') no-repeat;
+    background-position: center;
+    background-size: 50px 50px;
+}
+
+.green {
+    background-color: rgba(2,202,200,.8);
+}
+
+.red {
+    background-color: rgba(251,23,50,.8);
 }
