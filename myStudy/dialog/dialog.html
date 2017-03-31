@@ -22,48 +22,158 @@
             </div>
         </div>
     </div>-->
-    <!--<button id="btn1">没有传递任何参数（需手动关闭）</button>
+    <button id="btn1">没有传递任何参数（需手动关闭）</button>
         <button id="btn2">弹出一个不带任何按钮，且是警告的框，并且2秒后自动关闭</button>
         <button id="btn3">弹出一个有确认和取消按钮的成功框，点击按钮直接关闭</button>
         <button id="btn4">弹出一个有确认按钮的警告框，点击按钮不关闭（需手动关闭）</button>
         <button id="btn5">弹出一个多组合的按钮框，且按钮样式可定制</button>
-        <button id="btn6">弹出一个确认和删除的框，点击确认弹出加载框2秒自动关闭，点击删除按钮把上一次框关闭</button>-->
+        <button id="btn6">弹出一个确认和删除的框，点击确认弹出加载框2秒自动关闭，点击删除按钮把上一次框关闭</button>
     <script type="text/javascript" src="js/zepto.js"></script>
     <script type="text/javascript" src="js/dialog.js"></script>
     <script type="text/javascript" src="js/touch.js"></script>
     <script>
-        var d = new Dialog({
-            // 对话框的宽
-            // width: 100,
-            // 对话框的高
-            height: 50,
-            // 对话框提示信息
-            message: "你还好吗？",
-            // 对话框的类型
-            type: 'waiting',
-            // 按钮配置
-            buttons: [
+    $("#btn1").tap(function(){
+        var d = $.dialog();
+    });
+    $("#btn2").tap(function(){
+        var d = $.dialog({
+            type: "warning",
+            message: "2秒后关闭",
+            delay:2000
+        });
+    });
+    $("#btn3").tap(function(){
+        var d = $.dialog({
+            type: "warning",
+            message: "2秒后关闭",
+            buttons:[
+                {
+                    text: "确认"
+                },
+                {
+                    text: "取消"
+                }
+            ]
+        });
+    });
+     $("#btn4").tap(function(){
+        var d = $.dialog({
+            type: "warning",
+            message: "我是警告框",
+            buttons:[
                 {
                     type: "red",
-                    text: "不好",
+                    text: "确认"
+                }
+            ],
+            callback: function () {
+                alert("点击我不会关闭！");
+                return false;
+            }
+        });
+    });
+     $("#btn5").tap(function(){
+        var d = $.dialog({
+            type: "warning",
+            message: "我是警告框",
+            buttons:[
+                {
+                    text: "好吧",
                     callback: function () {
-                        alert(1000);
+                        alert("点击我不会关闭！");
                         return false;
                     }
                 },
                 {
                     type: "green",
-                    text: "好啊",
+                    text: "好吧",
                     callback: function () {
-                        alert(2000);
+                        alert("点击我会关闭！");
+                    }
+                },
+                {
+                    type: "red",
+                    text: "确认",
+                    callback: function () {
+                        alert("点击我不会关闭！");
+                        return false;
                     }
                 }
             ],
-            // 弹出框延迟多久关闭
-            // delay: 3000,
-            // 对话框遮罩透明度
-            maskOpacity: 0.5
         });
+    });
+    $("#btn6").tap(function(){
+        var d = $.dialog({
+            type: "warning",
+            message: "我是警告框",
+            buttons:[
+                {
+                    type: "green",
+                    text: "确认",
+                    callback: function () {
+                        $.dialog({
+                            type: "waiting",
+                            delay: 2000
+                        });
+                        return false;
+                    }
+                },
+                {
+                    type: "red",
+                    text: "删除",
+                    callback: function () {
+                        $.dialog({
+                            type: "warning",
+                            buttons: [
+                                {
+                                    type: "red",
+                                    text: "删除之前的弹框！",
+                                    callback: function () {
+                                        d.close();
+                                        return false;
+                                    }
+                                }
+                            ]
+                        })
+                        return false;
+                    }
+                },
+            ],
+            
+        });
+    });
+        // var d = $.dialog({
+        //     // 对话框的宽
+        //     // width: 100,
+        //     // 对话框的高
+        //     height: 50,
+        //     // 对话框提示信息
+        //     message: "你还好吗？",
+        //     // 对话框的类型
+        //     type: 'waiting',
+        //     // 按钮配置
+        //     buttons: [
+        //         {
+        //             type: "red",
+        //             text: "不好",
+        //             callback: function () {
+        //                 alert(1000);
+        //                 return false;
+        //             }
+        //         },
+        //         {
+        //             type: "green",
+        //             text: "好啊",
+        //             callback: function () {
+        //                 alert(2000);
+        //             }
+        //         }
+        //     ],
+        //     // 弹出框延迟多久关闭
+        //     // delay: 3000,
+        //     // 对话框遮罩透明度
+        //     maskOpacity: 0.5
+        // });
     </script>
 </body>
 </html>

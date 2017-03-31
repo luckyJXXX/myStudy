@@ -105,7 +105,7 @@
             $(buttons).each(function(){
                 // 获取按钮的样式回调以及文本
                 var type = this.type ? " class=" + this.type : '';
-                var btnText = this.text ? this.text : "按钮"+(++i);
+                var btnText = this.text ? this.text : '';
                 var callback = this.callback ? this.callback : null;
                 var button = $("<button"+type+">"+btnText+"</button>");
                 
@@ -131,7 +131,9 @@
     };
 
     window.Dialog = Dialog;
-
+    $.dialog = function (config) {
+        return new Dialog(config);
+    }
 
 
 })(Zepto);
