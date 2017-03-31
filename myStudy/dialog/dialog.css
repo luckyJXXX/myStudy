@@ -34,6 +34,7 @@ button {
     display: -webkit-flex;
     -webkit-justify-content:center;
     -webkit-align-items:center;
+    z-index: 999;
 }
 
 .dialog-window {
@@ -89,4 +90,12 @@ button {
 
 .red {
     background-color: rgba(251,23,50,.8);
+}
+
+#div {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: lightcoral;
+    z-index: 100;
 }
