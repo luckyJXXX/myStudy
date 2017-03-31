@@ -72,6 +72,7 @@
                 // 按钮组
                 if (config.buttons) {
                     // 
+                    this.creatButtons(footer,config.buttons);
                     win.append(footer);
                 };
                 // 插入到页面
@@ -87,16 +88,41 @@
                 };
                 // 对话框遮罩透明度
                 if (config.maskOpacity) {
-                    mask.css("backgroundColor","rgba(0,0,0,"+config.maskOpacity+")");
+                    mask.css("backgr oundColor","rgba(0,0,0,"+config.maskOpacity+")");
                 };
                 // 设置弹出框弹出后多久关闭
                 if (config.delay && config.delay != 0) {
                     window.setTimeout(function(){
                         _this_.close();
                     },config.delay);
-                }
+                };
             }
 
+        },
+        // 根据配置参数的buttons创建按钮列表
+        creatButtons: function (footer,buttons) {
+            var _this_ = this;
+            $(buttons).each(function(){
+                // 获取按钮的样式回调以及文本
+                var type = this.type ? " class=" + this.type : '';
+                var btnText = this.text ? this.text : "按钮"+(++i);
+                var callback = this.callback ? this.callback : null;
+                var button = $("<button"+type+">"+btnText+"</button>");
+                
+                if (callback) {
+                    button.tap(function(){
+                        var isClose = callback();
+                        if (isClose != false) {
+                            _this_.close();
+                        }
+                    });
+                } else {
+                    button.tap(function(){
+                        _this_.close();
+                    });
+                }
+                footer.append(button);
+            });
         },
         close: function () {
             this.mask.remove();

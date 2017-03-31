@@ -30,10 +30,11 @@
         <button id="btn6">弹出一个确认和删除的框，点击确认弹出加载框2秒自动关闭，点击删除按钮把上一次框关闭</button>-->
     <script type="text/javascript" src="js/zepto.js"></script>
     <script type="text/javascript" src="js/dialog.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
     <script>
         var d = new Dialog({
             // 对话框的宽
-            width: 100,
+            // width: 100,
             // 对话框的高
             height: 50,
             // 对话框提示信息
@@ -42,23 +43,24 @@
             type: 'waiting',
             // 按钮配置
             buttons: [
-                // {
-                //     type: "red",
-                //     text: "不好",
-                //     callback: function () {
-
-                //     }
-                // },
-                // {
-                //     type: "green",
-                //     text: "好啊",
-                //     callback: function () {
-
-                //     }
-                // }
+                {
+                    type: "red",
+                    text: "不好",
+                    callback: function () {
+                        alert(1000);
+                        return false;
+                    }
+                },
+                {
+                    type: "green",
+                    text: "好啊",
+                    callback: function () {
+                        alert(2000);
+                    }
+                }
             ],
             // 弹出框延迟多久关闭
-            delay: 3000,
+            // delay: 3000,
             // 对话框遮罩透明度
             maskOpacity: 0.5
         });
