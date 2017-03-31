@@ -23,7 +23,7 @@
         if (config && $.isPlainObject(config)) {
             $.extend(this.config,config);
         }else {
-            this.config = true;
+            this.isConfig = true;
         };
         // console.log(this.config);
         // 创建基本的DOM
@@ -57,12 +57,49 @@
                 body = this.body;
         
             // 如果没有传递任何配置参数，弹出等待图标形式的弹框
-            if (this.config){
+            if (this.isConfig){
                 win.append(header.addClass('waiting'));
                 mask.append(win);
                 body.append(mask);
+            }else {
+                // 根据相应参数配置弹框
+                header.addClass(config.type);
+                win.append(header);
+                // 如果穿了信息文本
+                if (config.message) {
+                    win.append(content.html(config.message));
+                };
+                // 按钮组
+                if (config.buttons) {
+                    // 
+                    win.append(footer);
+                };
+                // 插入到页面
+                mask.append(win);
+                body.append(mask);
+                // 设置对话框宽高
+                if (config.width != "auto") {
+                    win.width(config.width);
+                };
+                // 设置高度
+                if (config.height != "auto") {
+                    win.height(config.height);
+                };
+                // 对话框遮罩透明度
+                if (config.maskOpacity) {
+                    mask.css("backgroundColor","rgba(0,0,0,"+config.maskOpacity+")");
+                };
+                // 设置弹出框弹出后多久关闭
+                if (config.delay && config.delay != 0) {
+                    window.setTimeout(function(){
+                        _this_.close();
+                    },config.delay);
+                }
             }
 
+        },
+        close: function () {
+            this.mask.remove();
         }
 
     };

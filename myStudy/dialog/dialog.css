@@ -70,6 +70,18 @@ button {
     background-size: 50px 50px;
 }
 
+.warning {
+    background: url('img/pay-fail.png') no-repeat;
+    background-position: top;
+    background-size: 50px 50px;
+}
+
+.ok {
+    background: url('img/check-box-checked.png') no-repeat;
+    background-position: top;
+    background-size: 50px 50px;
+}
+
 .green {
     background-color: rgba(2,202,200,.8);
 }
