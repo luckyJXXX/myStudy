@@ -8,7 +8,8 @@
     <!--网站开启对 web app 程序的支持-->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="dialog.css">
+    <!--<link rel="stylesheet" href="dialog.css">-->
+    <link rel="stylesheet" href="dialogcss.css">
 </head>
 <body>
     <!--遮罩层-->
@@ -35,6 +36,11 @@
     <script type="text/javascript" src="js/dialog.js"></script>
     <script type="text/javascript" src="js/touch.js"></script>
     <script>
+    $.dialog({
+        type: 'waiting',
+        message: '我叫等待对话框'
+    });
+
     $("#btn1").tap(function(){
         var d = $.dialog();
     });
