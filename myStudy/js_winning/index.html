@@ -1,0 +1,113 @@
+<!-- 原生 js 实现抽奖大转盘-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wheel">
+        <ul class="wheel-light">
+            <li><i></i><i></i><i></i><i></i></li>
+            <li><i></i><i></i><i></i><i></i></li>
+            <li><i></i><i></i><i></i><i></i></li>
+            <li><i></i><i></i><i></i><i></i></li>
+            <li><i></i><i></i><i></i><i></i></li>
+            <li><i></i><i></i><i></i><i></i></li>
+        </ul>
+        <ul id="wheel" class="wheel-list">
+            <li style="transform: rotate(0deg);">
+                <i style="transform: rotate(30deg) skewY(30deg);"></i>
+                <div class="prize">
+                    <h3>一等奖</h3>
+                    <p>iPhone6 plus</p>
+                </div>
+            </li>
+            <li style="transform: rotate(60deg);">
+
+                <i style="transform: rotate(30deg) skewY(30deg);"></i>
+                <div class="prize">
+                    <h3>再接再厉</h3>
+                    <p>呜呜 没有中奖 ...</p>
+                </div>
+            </li>
+            <li style="transform: rotate(120deg);">
+
+                <i style="transform: rotate(30deg) skewY(30deg);"></i>
+                <div class="prize">
+                    <h3>鼓励奖</h3>
+                    <p>差一点啊</p>
+                </div>
+            </li>
+            <li style="transform: rotate(180deg);">
+                <i style="transform: rotate(30deg) skewY(30deg);"></i>
+                <div class="prize">
+                    <h3>四等奖</h3>
+                    <p>特级红富士一个</p>
+                </div>
+            </li>
+            <li style="transform: rotate(240deg);">
+                <i style="transform: rotate(30deg) skewY(30deg);"></i>
+                <div class="prize">
+                    <h3>三等奖</h3>
+                    <p>iPad mini retina</p>
+                </div>
+            </li>
+            <li style="transform: rotate(300deg);">
+                <i style="transform: rotate(30deg) skewY(30deg);"></i>
+                <div class="prize">
+                    <h3>二等奖</h3>
+                    <p>iPad Air2</p>
+                </div>
+            </li>
+        </ul>
+        <div id="pointer" class="wheel-pointer"><i></i></div>
+        <div class="wheel-btn">
+            <a id="button" href="javascript:;">
+                <strong>试试手气!</strong>
+            </a>
+        </div>
+    </div>
+
+    <!-- 提示  str-->
+    <style media="screen">
+        .secenio {
+            width: 600px;
+            background: #ffffff;
+            margin: 0 auto;
+            padding: 50px;
+        }
+        
+        .secenio ul li strong {
+            width: 200px;
+            display: inline-block;
+            padding-left: 5px;
+        }
+        
+        .secenio ul li span {
+            display: inline-block;
+            width: 20px;
+        }
+        
+        .secenio ul li i {
+            font-style: normal;
+        }
+    </style>
+    <div class="secenio">
+        <ul>
+            <li>一等奖 :<strong>iPhone6 plus </strong><span></span>总数量:<i>1</i></li>
+            <li>二等奖 :<strong>iPad Air2</strong><span></span>总数量:<i>2</i></li>
+            <li>三等奖 :<strong>iPad mini retina</strong><span></span>总数量:<i>3</i></li>
+            <li>苹果奖 :<strong>特级红富士一个</strong><span></span>总数量:<i>4</i></li>
+            <li>鼓励奖 :<strong>差点就中奖了! 再接再厉</strong><span></span>总数量:<i>5</i></li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+
+</html>
