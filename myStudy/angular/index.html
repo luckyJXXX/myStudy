@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>angularJs demo</title>
+    <script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body>
+    <div class="container" ng-app="myApp" ng-controller="myCtrl">
+        <p>
+            名：<input type="text" ng-model="firstName">
+        </p>
+        <p>
+            姓：<input type="text" ng-model="lastName">
+        </p>
+        <p>
+            姓名：{{firstName + " " +lastName}}
+        </p>
+    </div>
+    <script type="text/javascript">
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+            $scope.firstName= "John";
+            $scope.lastName= "Doe";
+        });
+    </script>
+</body>
+</html>
