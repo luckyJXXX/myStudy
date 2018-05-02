@@ -1,0 +1,1 @@
+# This project is used to collect some code that I meet everyday.
