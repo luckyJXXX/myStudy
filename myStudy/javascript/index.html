@@ -67,6 +67,103 @@
       // return bankNo.replace(/[ \f\t\v]/g, '').replace(/(\d{4})(?=\d)/g, "$1 ")
       // return bankNo.replace(/[\s]/g, '').replace(/(\d{4})(?=\d)/g, "$1 ")
     }
+
+    // js 获取验证码倒计时
+    function countDown(i) {
+      if(!i) {
+        let i = 60;
+      }
+      // this.smsBtnText = i + 's后重新获取'
+      if(i <= 0){
+					// this.smsBtnClass = ''
+					// this.smsBtnText = '获取验证码'
+					return 
+				}
+				setTimeout(() => {
+					i--
+					this.setSmsBtnText(i)
+				}, 1000)
+    }
+    function countdown(time) {
+      if (time == null) {
+        return;
+      }
+      if (time <= 0) {
+        this.captchaText = '获取验证码';
+        return;
+      }
+      this.captchaText = `${time}s`;
+      this.timeoutId = setTimeout(() => {
+        this.countdown(--time)
+      }, 1000)
+    }
+
+    //js 上传图片
+    function previewImg(imgFile) {
+      return new Promise((resolve, reject) => {
+        let reader = new FileReader();
+        reader.onload = () => {
+          resolve(reader.result);
+        }
+        reader.onerror = (err) => {
+          reject(err)
+        }
+        reader.readAsDataURL(imgFile);
+      })
+    } 
+    function backChange(e) {
+      if (!e.target.files[0]) return
+      let _self = this
+      Indicator.open({
+        spinnerType: 'fading-circle'
+      })
+      _self.photoData = e.target.files[0]
+      this.previewImg(_self.photoData)
+        .then(res => {
+          Indicator.close()
+          _self.backSrc = res;
+          this.uploadIdcard()
+        }).catch(err => {
+          Indicator.close()
+          Toast('小美开小差啦，请稍后再试')
+        })
+    }
+    function uploadIdcard() {
+      lrz(this.photoData, {
+        width: '450',
+        quality: 0.1
+      }).then(res => {
+        let file = res.file
+        let param = new FormData()
+        param.append('image', file)
+        accounts.uploadIdcard(param).then(res => {
+          Indicator.close()
+          if (res.code == 0) {
+            if (res.data) {
+              let cardInfo = res.data
+              this.side = res.data.side
+              if (this.side == 'front') {
+                this.number = res.data.number
+                this.name = res.data.name
+                this.idCardFrontOCRCode = res.data.logCode
+              }
+              if (this.side == 'back') {
+                this.validDate = res.data.validDate
+                this.isExpired = res.data.isExpired
+                this.idCardBackOCRCode = res.data.logCode
+              }
+            }
+          } else {
+            res.message && Toast(res.message)
+          }
+        })
+      }).catch(err => {
+        Indicator.close()
+        Toast('小美开小差啦，请稍后再试')
+      })
+    }
+
+    
   </script>
 </body>
 </html>
