@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>js的一些方法整理</title>
+</head>
+<body>
+  <div>js常用方法整理</div>
+  <script type="text/javascript">
+    // js 删除数组重复项
+    function unique(arr) {
+      var result = [], isRepeat;
+      for(var i = 0; i < arr.length; i++) {
+        isRepeat = false;
+        for(var j = 0, len = result.length; j < len; j++) {
+          if(arr[i] == result[j]) {
+            isRepeat = true;
+            break;
+          }
+        }
+        if(!isRepeat) {
+          result.push(arr[i]);
+        }
+      }
+      return result;
+    }
+    // sort() 方法用于对数组的元素进行排序,并返回数组。默认排序顺序是根据字符串Unicode码点，若要实现数字排序，需要一个排序函数
+    function sortNumber(a, b) {
+      return a - b;  // 若是升序排序则是a-b;若是降序排序则是b-a;
+    }
+
+    // js 数组求和
+    function arrSum(arr) {
+      return eval(arr.join('+'))
+    }
+
+    // js 反转字符串
+    function reverseStr(str) {
+      return str.split('').reverse().join('');
+    }
+
+    // js 金额千分位格式化
+    function toThousands(num) {
+      var result = [], counter = 0;
+      num = (num || 0).toString().split('');
+      for(var i = num.length - 1; i >= 0; i--) {
+        counter++;
+        result.unshift(num[i]);
+        if(!(counter % 3) && i != 0) {
+          result.unshift(',')
+        }
+      }
+      return result.join('');
+    }
+
+    // js 手机号中间4位****显示
+    function maskTel(tel) {
+      if (!tel) {
+          return ''
+      }
+      return tel.slice(0, 3) + '****' + tel.slice(7);
+    }
+
+    // js 银行卡号4位格式化显示
+    function formatBankNo(bankNo) {
+      return bankNo.replace(/(\d{4})(?=\d)/g, "$1" + " ");
+      // return bankNo.replace(/[ \f\t\v]/g, '').replace(/(\d{4})(?=\d)/g, "$1 ")
+      // return bankNo.replace(/[\s]/g, '').replace(/(\d{4})(?=\d)/g, "$1 ")
+    }
+  </script>
+</body>
+</html>
