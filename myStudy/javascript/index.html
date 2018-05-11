@@ -24,6 +24,18 @@
       }
       return result;
     }
+    Array.prototype.unique1 = function() {
+      // 创建一个新的临时数组，并且把当前数组的第一元素存入到数组中
+      var newArr = [this[0]];
+      // 从第二项开始遍历
+      for(var i = 1; i < this.length; i++) {
+        // 如果当前数组的第i项在当前数组中第一次出现的位置不是i，那么表示第i项是重复的，忽略掉，否则存入新数组
+        if(this.indexOf(this[i]) == i) {
+          newArr.push(this[i]);
+        }
+      }
+      return newArr;
+    }
     // sort() 方法用于对数组的元素进行排序,并返回数组。默认排序顺序是根据字符串Unicode码点，若要实现数字排序，需要一个排序函数
     function sortNumber(a, b) {
       return a - b;  // 若是升序排序则是a-b;若是降序排序则是b-a;
@@ -163,7 +175,12 @@
       })
     }
 
-    
+    // js 遍历数组的几种方式
+    // js 数组遍历，基本就是for, for...in., forEach, for...of., map等方法
+    //  1.普通for循环
+    // for(j = 0; j < arr.length; j++) {
+
+    // }
   </script>
 </body>
 </html>
