@@ -6,6 +6,7 @@
 </head>
 <body>
   <div>js常用方法整理</div>
+
   <script type="text/javascript">
     // js 删除数组重复项
     function unique(arr) {
@@ -35,6 +36,12 @@
         }
       }
       return newArr;
+    }
+
+    // filter + indexOf()
+    function unique2(arr) {
+      return arr.filter((item, index, array) => array.indexOf(item) === index);
+        
     }
     // sort() 方法用于对数组的元素进行排序,并返回数组。默认排序顺序是根据字符串Unicode码点，若要实现数字排序，需要一个排序函数
     function sortNumber(a, b) {
